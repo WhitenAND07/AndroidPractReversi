@@ -1,0 +1,2 @@
+# PracticaReversi
+Android Practica

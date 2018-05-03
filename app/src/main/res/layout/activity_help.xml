@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,26 +27,36 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:textColor="@color/blanc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/instruccions"
-        android:paddingLeft="@dimen/espaiesquerra"
-        android:layout_marginTop="@dimen/espaitext"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="@dimen/midaimatge"
-        android:layout_height="@dimen/midaimatge"
-        android:layout_gravity="center"
-        android:src="@drawable/reversi"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/botoinici"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Inici"
-        android:layout_gravity="center" />
+            <TextView
+                android:textColor="@color/blanc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/instruccions" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:src="@drawable/reversi" />
+
+            <Button
+                android:id="@+id/botoinici"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/Inici" />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

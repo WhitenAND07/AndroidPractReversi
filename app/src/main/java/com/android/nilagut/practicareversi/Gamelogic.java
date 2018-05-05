@@ -1,6 +1,5 @@
 package com.android.nilagut.practicareversi;
 
-import android.os.CountDownTimer;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -23,7 +22,14 @@ public class Gamelogic implements Parcelable {
         }
     };
 
+    public Gamelogic(int parcel) {
+        this.mida = mida;
+        this.tauler = new int[mida][mida];
+    }
+
     public Gamelogic(Parcel parcel) {
+        torn = parcel.readInt();
+        mida = parcel.readInt();
     }
 
 
@@ -37,7 +43,7 @@ public class Gamelogic implements Parcelable {
     }
 
     public long temps;
-    boolean sensetemps = false;
+    boolean tempsacabat = false;
     private int torn = 1;
     private int[][] tauler;
     private int mida;
@@ -77,6 +83,27 @@ public class Gamelogic implements Parcelable {
 
     }
 
+    void omplirCaselles(int posicio){
+        if(this.torn == 1){
+            if(this.casellespc.contains(posicio)){
+                this.casellespc.remove(casellespc.indexOf(posicio));
+            }
+            if (!this.casellesusuari.contains(posicio)){
+                this.casellesusuari.add(posicio);
+                tauler[posicio / mida][posicio % mida] = opcions.jugador1;
+            }
+        }
+        else{
+            if(this.casellesusuari.contains(posicio)){
+                this.casellesusuari.remove(casellesusuari.indexOf(posicio));
+            }
+            if(!this.casellespc.contains(posicio)){
+                this.casellespc.add(posicio);
+                tauler[posicio / mida][posicio % mida] = opcions.jugador2;
+            }
+        }
+    }
+
     void canviTorn() {
         if (torn == 1) this.torn = 2;
         else this.torn = 1;
@@ -85,6 +112,22 @@ public class Gamelogic implements Parcelable {
     private int caniJugador() {
         if (torn == 1) return 2;
         else return 1;
+    }
+
+    List<Integer> getCasellesusuari(){
+        return casellesusuari;
+    }
+
+    List<Integer> getCasellespc(){
+        return casellespc;
+    }
+
+    List<Integer> getCasellesAcanviar(int posicio){
+        return casellesacanviar.get(posicio);
+    }
+
+    List<Integer> possiblesPosicionsCaselles(){
+        return casellespossibles;
     }
 
     int obtenirTemps() {
@@ -320,6 +363,10 @@ public class Gamelogic implements Parcelable {
             }
         }
         return dades;
+    }
+
+    boolean finalitzat(){
+        return mida * mida - getCasellesusuari().size() - getCasellespc().size() == 0;
     }
 
     public void wrtiteToParcel(Parcel parcel, int i) {

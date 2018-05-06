@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">PracticaReversi</string>
     <string name="Inici">Inici</string>
+    <string name="Resultats">Resultats</string>
     <string name="ajuda">AJUDA</string>
     <string name="comensar">COMENÇAR PARTIDA</string>
     <string name="sortir">SORTIR</string>
@@ -10,4 +11,10 @@
     <string name="alias">Alias identificatiu</string>
     <string name="partida">Partida</string>
     <string name="encurs">Partida en curs</string>
+    <string name="date">Dia i Hora</string>
+    <string name="ValorsLog">Valors del Log</string>
+    <string name="emailDst">Email destinatari</string>
+    <string name="btnEmail">Enviar e-mail</string>
+    <string name="btnNewGame">Nova Partida</string>
+    <string name="btnExit">Sortir</string>
 </resources>

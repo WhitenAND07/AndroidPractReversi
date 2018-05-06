@@ -16,6 +16,9 @@ import com.android.nilagut.practicareversi.opcions;
 
 import static android.provider.Settings.System.getConfiguration;
 
-public class ResultActivity {
-
+public class ResultActivity extends AppCompatActivity {
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_result);
+        }
 }

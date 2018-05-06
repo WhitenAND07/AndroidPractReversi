@@ -102,9 +102,9 @@ public class ImageAdapter extends BaseAdapter {
         } else if (gameBoard.getPositionsComputer().contains(position)) {
             return R.drawable.blackpiece;
         } else if (gameBoard.getPositionsPossibleCells().contains(position)) {
-            return R.drawable.blackpiece;
+            return R.drawable.casellapossible;
         } else {
-            return R.drawable.blackpiece;
+            return R.drawable.casellabuida;
         }
     }
 

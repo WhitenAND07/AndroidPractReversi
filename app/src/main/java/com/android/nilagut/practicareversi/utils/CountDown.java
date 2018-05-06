@@ -1,7 +1,9 @@
-package com.android.nilagut.practicareversi;
+package com.android.nilagut.practicareversi.utils;
 
 
 import android.os.CountDownTimer;
+
+import com.android.nilagut.practicareversi.utils.Gamelogic;
 
 public class CountDown extends CountDownTimer {
     private final Gamelogic tauler;

@@ -1,4 +1,4 @@
-package com.android.nilagut.practicareversi;
+package com.android.nilagut.practicareversi.utils;
 
 
 import android.widget.BaseAdapter;
@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.nilagut.practicareversi.Activities.ResultActivity;
+import com.android.nilagut.practicareversi.R;
 
 public class ImageAdapter extends BaseAdapter{
 

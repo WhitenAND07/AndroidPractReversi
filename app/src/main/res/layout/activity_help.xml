@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/green"
     android:orientation="vertical"
-    tools:context=".HelpActivity">
+    tools:context=".Activities.HelpActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

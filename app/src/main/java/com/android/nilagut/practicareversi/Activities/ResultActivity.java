@@ -1,4 +1,4 @@
-package com.android.nilagut.practicareversi;
+package com.android.nilagut.practicareversi.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,8 +13,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.Date;
+
 import com.android.nilagut.practicareversi.R;
+import com.android.nilagut.practicareversi.utils.opcions;
 
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
@@ -77,7 +80,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     private void createLog() {
         String moreLog = "";
         if (withTime) {
-            moreLog += "\n" + opcions.esquerra + timeLeft + opcions.SEGON;
+            moreLog += "\n" + opcions.esquerra + timeLeft + opcions.SEGONS;
         }
        /* if (timeLeft == 0) {
             resume.setText(getString(R.string.Alias) + alias + ". " +

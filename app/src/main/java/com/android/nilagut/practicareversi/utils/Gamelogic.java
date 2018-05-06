@@ -1,4 +1,4 @@
-package com.android.nilagut.practicareversi;
+package com.android.nilagut.practicareversi.utils;
 
 import android.os.Parcel;
 import android.os.Parcelable;

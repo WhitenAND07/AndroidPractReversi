@@ -1,4 +1,4 @@
-package com.android.nilagut.practicareversi;
+package com.android.nilagut.practicareversi.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +9,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
 import com.android.nilagut.practicareversi.R;
-import com.android.nilagut.practicareversi.opcions;
+import com.android.nilagut.practicareversi.utils.opcions;
 
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
 

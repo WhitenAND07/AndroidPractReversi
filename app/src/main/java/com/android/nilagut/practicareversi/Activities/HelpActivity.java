@@ -1,4 +1,4 @@
-package com.android.nilagut.practicareversi;
+package com.android.nilagut.practicareversi.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toolbar;
+
+import com.android.nilagut.practicareversi.R;
 
 public class HelpActivity extends AppCompatActivity {
 

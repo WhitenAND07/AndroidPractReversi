@@ -37,7 +37,7 @@ public class GameLogic implements Parcelable {
         this.tauler = new int[mida][mida];
     }
 
-    public GameLogic(Parcel parcel) {
+    private GameLogic(Parcel parcel) {
         torn = parcel.readInt();
         mida = parcel.readInt();
     }

@@ -18,19 +18,20 @@ import com.android.nilagut.practicareversi.R;
 public class ImageAdapter extends BaseAdapter{
 
     private Activity activitat;
-    private Gamelogic tauler;
+    private GameLogic tauler;
     private TextView caselles, puntuacio1, puntuacio2;
     private TextView temps;
     private boolean ambTemps;
     private int MIDA;
     private String nom;
 
-    public ImageAdapter(Activity a, Gamelogic tauler, String nom, int mida,
+    public ImageAdapter(Activity a, GameLogic tauler, String nom, int mida,
                         boolean ambTemps, TextView caselles, TextView temps, TextView puntuacio1,
                         TextView puntuacio2){
         activitat = a;
         this.tauler = tauler;
         this.nom = nom;
+        this.MIDA = mida;
         this.ambTemps = ambTemps;
         this.caselles = caselles;
         this.temps = temps;
@@ -42,15 +43,16 @@ public class ImageAdapter extends BaseAdapter{
     }
 
     private void actualitzarMarcadors() {
-        this.caselles.setText(String.valueOf(MIDA * MIDA - tauler.getCasellesusuari().size() -
-            tauler.getCasellespc().size()));
-        this.puntuacio1.setText(String.valueOf(tauler.getCasellesusuari().size()));
-        this.puntuacio2.setText(String.valueOf(tauler.getCasellespc().size()));
+        this.caselles.setText(String.valueOf(MIDA * MIDA - tauler.getCasellesUsuari().size() -
+            tauler.getCasellesPC().size()));
+        this.puntuacio1.setText(String.valueOf(tauler.getCasellesUsuari().size()));
+        this.puntuacio2.setText(String.valueOf(tauler.getCasellesPC().size()));
     }
 
     private void actualitzarTemps() {
         if(ambTemps){
             temps.setText(String.valueOf(tauler.obtenirTemps() / opcions.SEGON));
+            temps.setTextColor(activitat.getResources().getColor(R.color.colorAccent));
         }
         else{
             temps.setText(String.valueOf((System.currentTimeMillis() / opcions.SEGON) - tauler.temps));
@@ -59,7 +61,7 @@ public class ImageAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return 0;
+        return MIDA*MIDA;
     }
 
     @Override
@@ -76,10 +78,10 @@ public class ImageAdapter extends BaseAdapter{
         Button boto;
         if (convertView == null) {
             boto = new Button(activitat);
-            if (MIDA*MIDA == 64) {
+            if (getCount() == 64) {
                 boto.setLayoutParams(new GridView.LayoutParams(45, 45));
                 boto.setPadding(5, 5, 5, 5);
-            } else if (MIDA*MIDA == 36) {
+            } else if (getCount() == 36) {
                 boto.setLayoutParams(new GridView.LayoutParams(60, 60));
                 boto.setPadding(5, 5, 5, 5);
             } else {
@@ -98,10 +100,10 @@ public class ImageAdapter extends BaseAdapter{
     }
 
     private int afegirFitxa(int posicio) {
-        if(tauler.getCasellesusuari().contains(posicio)){
+        if(tauler.getCasellesUsuari().contains(posicio)){
             return R.drawable.redpiece;
         }
-        else if(tauler.getCasellespc().contains(posicio)){
+        else if(tauler.getCasellesPC().contains(posicio)){
             return R.drawable.blackpiece;
         }
         else if(tauler.possiblesPosicionsCaselles().contains(posicio)){
@@ -160,7 +162,7 @@ public class ImageAdapter extends BaseAdapter{
                 return true;
             } else if (tauler.possiblesPosicionsCaselles().size() == 0) {
                 tauler.canviTorn();
-                tauler.possiblesPosicions();
+                tauler.getpossiblesPosicions();
                 notifyDataSetChanged();
                 return tauler.possiblesPosicionsCaselles().size() == 0;
             } else {
@@ -168,19 +170,17 @@ public class ImageAdapter extends BaseAdapter{
             }
         }
     }
-
+    private void omplirCaselles(int position){
+        for(int caselles : tauler.getCasellesAcanviar(position)){
+            tauler.omplirCasella(caselles);
+        }
+    }
     private void tirar(int posicio) {
-        tauler.omplirCaselles(posicio);
+        omplirCaselles(posicio);
         tauler.canviTorn();
-        tauler.possiblesPosicions();
+        tauler.getpossiblesPosicions();
         actualitzarMarcadors();
         actualitzarTemps();
         notifyDataSetChanged();
     }
 }
-
-
-
-
-
-

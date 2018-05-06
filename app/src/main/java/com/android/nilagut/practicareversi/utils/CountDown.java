@@ -3,13 +3,11 @@ package com.android.nilagut.practicareversi.utils;
 
 import android.os.CountDownTimer;
 
-import com.android.nilagut.practicareversi.utils.Gamelogic;
-
 public class CountDown extends CountDownTimer {
-    private final Gamelogic tauler;
+    private final GameLogic tauler;
     private long timeToFinish;
 
-    CountDown(long millisInFuture, long countDownInterval, Gamelogic tauler) {
+    CountDown(long millisInFuture, long countDownInterval, GameLogic tauler) {
         super(millisInFuture, countDownInterval);
         this.tauler = tauler;
     }

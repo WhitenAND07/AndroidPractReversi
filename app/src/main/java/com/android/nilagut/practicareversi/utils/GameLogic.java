@@ -6,28 +6,38 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
-public class Gamelogic implements Parcelable {
+public class GameLogic implements Parcelable {
 
-    public static final Creator<Gamelogic> CREATOR = new Creator<Gamelogic>() {
+    public static final Creator<GameLogic> CREATOR = new Creator<GameLogic>() {
         @Override
-        public Gamelogic createFromParcel(Parcel parcel) {
-            return new Gamelogic(parcel);
+        public GameLogic createFromParcel(Parcel parcel) {
+            return new GameLogic(parcel);
         }
 
         @Override
-        public Gamelogic[] newArray(int mida) {
-            return new Gamelogic[mida];
+        public GameLogic[] newArray(int mida) {
+            return new GameLogic[mida];
         }
     };
 
-    public Gamelogic(int parcel) {
+    public long temps;
+    boolean tempsacabat = false;
+    private int torn = 1;
+    private int[][] tauler;
+    private int mida;
+    private List<Integer> casellesUsuari;
+    private List<Integer> casellesPC;
+    private List<Integer> casellesPossibles = new ArrayList<>();
+    private HashMap<Integer, List<Integer>> casellesacanviar = new HashMap<>();
+    private CountDown crono;
+
+    public GameLogic(int mida) {
         this.mida = mida;
         this.tauler = new int[mida][mida];
     }
 
-    public Gamelogic(Parcel parcel) {
+    public GameLogic(Parcel parcel) {
         torn = parcel.readInt();
         mida = parcel.readInt();
     }
@@ -39,32 +49,28 @@ public class Gamelogic implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeSerializable(tauler);
+        parcel.writeInt(mida);
+        parcel.writeInt(torn);
+        parcel.writeList(casellesUsuari);
+        parcel.writeList(casellesPC);
     }
 
-    public long temps;
-    boolean tempsacabat = false;
-    private int torn = 1;
-    private int[][] tauler;
-    private int mida;
-    private List<Integer> casellesusuari;
-    private List<Integer> casellespc;
-    private List<Integer> casellespossibles = new ArrayList<>();
-    private HashMap<Integer, List<Integer>> casellesacanviar = new HashMap<>();
-    private CountDownLatch crono;
 
     public void CrearTauler(boolean ambTemps, int temps) {
-        casellesusuari = new ArrayList<>();
-        casellespc = new ArrayList<>();
+        casellesUsuari = new ArrayList<>();
+        casellesPC = new ArrayList<>();
         for (int i = 0; i < this.mida; i++) {
             for (int j = 0; j < this.mida; j++) {
                 this.tauler[i][j] = 0;
             }
         }
         movimentsInicials();
-        possiblesPosicions();
+        getpossiblesPosicions();
         if (ambTemps) {
-            crono = new CountDownLatch(opcions.SEGON);
+            crono = new CountDown(temps * opcions.SEGON, opcions.SEGON,this);
+            crono.start();
         } else {
             this.temps = System.currentTimeMillis() / opcions.SEGON;
         }
@@ -76,29 +82,29 @@ public class Gamelogic implements Parcelable {
         this.tauler[meitatTauler - 1][meitatTauler] = 2;
         this.tauler[meitatTauler][meitatTauler - 1] = 2;
         this.tauler[meitatTauler][meitatTauler] = 1;
-        casellesusuari.add((meitatTauler - 1) * mida + (meitatTauler - 1));
-        casellesusuari.add((meitatTauler) * mida + (meitatTauler));
-        casellespc.add((meitatTauler - 1) * mida + (meitatTauler));
-        casellespc.add((meitatTauler) * mida + (meitatTauler - 1));
+        casellesUsuari.add((meitatTauler - 1) * mida + (meitatTauler - 1));
+        casellesUsuari.add((meitatTauler * mida) + (meitatTauler));
+        casellesPC.add((meitatTauler - 1) * mida + (meitatTauler));
+        casellesPC.add((meitatTauler * mida) + (meitatTauler - 1));
 
     }
 
-    void omplirCaselles(int posicio){
+    void omplirCasella(int posicio){
         if(this.torn == 1){
-            if(this.casellespc.contains(posicio)){
-                this.casellespc.remove(casellespc.indexOf(posicio));
+            if(this.casellesPC.contains(posicio)){
+                this.casellesPC.remove(casellesPC.indexOf(posicio));
             }
-            if (!this.casellesusuari.contains(posicio)){
-                this.casellesusuari.add(posicio);
+            if (!this.casellesUsuari.contains(posicio)){
+                this.casellesUsuari.add(posicio);
                 tauler[posicio / mida][posicio % mida] = opcions.jugador1;
             }
         }
         else{
-            if(this.casellesusuari.contains(posicio)){
-                this.casellesusuari.remove(casellesusuari.indexOf(posicio));
+            if(this.casellesUsuari.contains(posicio)){
+                this.casellesUsuari.remove(casellesUsuari.indexOf(posicio));
             }
-            if(!this.casellespc.contains(posicio)){
-                this.casellespc.add(posicio);
+            if(!this.casellesPC.contains(posicio)){
+                this.casellesPC.add(posicio);
                 tauler[posicio / mida][posicio % mida] = opcions.jugador2;
             }
         }
@@ -114,12 +120,12 @@ public class Gamelogic implements Parcelable {
         else return 1;
     }
 
-    List<Integer> getCasellesusuari(){
-        return casellesusuari;
+    List<Integer> getCasellesUsuari(){
+        return casellesUsuari;
     }
 
-    List<Integer> getCasellespc(){
-        return casellespc;
+    List<Integer> getCasellesPC(){
+        return casellesPC;
     }
 
     List<Integer> getCasellesAcanviar(int posicio){
@@ -127,20 +133,20 @@ public class Gamelogic implements Parcelable {
     }
 
     List<Integer> possiblesPosicionsCaselles(){
-        return casellespossibles;
+        return casellesPossibles;
     }
 
     int obtenirTemps() {
-        return (int) crono.getCount();
+        return (int) crono.getTime();
     }
 
-    void possiblesPosicions() {
-        casellespossibles.clear();
+    void getpossiblesPosicions() {
+        casellesPossibles.clear();
         casellesacanviar.clear();
         for (int i = 0; i < this.mida; i++) {
             for (int j = 0; j < this.mida; j++) {
                 if (movimentValid(i, j, torn)) {
-                    casellespossibles.add((i * mida) + j);
+                    casellesPossibles.add((i * mida) + j);
                 }
             }
         }
@@ -354,6 +360,9 @@ public class Gamelogic implements Parcelable {
             List<Integer> dades = casellesacanviar.get(posicioInicial);
             casellesacanviar.put(posicioInicial, ajuntarLlista(dades, cami));
         }
+        else{
+            casellesacanviar.put(posicioInicial,cami);
+        }
     }
 
     private List<Integer> ajuntarLlista(List<Integer> dades, List<Integer> cami) {
@@ -366,14 +375,14 @@ public class Gamelogic implements Parcelable {
     }
 
     boolean finalitzat(){
-        return mida * mida - getCasellesusuari().size() - getCasellespc().size() == 0;
+        return mida * mida - getCasellesUsuari().size() - getCasellesPC().size() == 0;
     }
 
     public void wrtiteToParcel(Parcel parcel, int i) {
         parcel.writeSerializable(tauler);
         parcel.writeInt(mida);
         parcel.writeInt(torn);
-        parcel.writeList(casellesusuari);
-        parcel.writeList(casellespc);
+        parcel.writeList(casellesUsuari);
+        parcel.writeList(casellesPC);
     }
 }

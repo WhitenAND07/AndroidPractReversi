@@ -16,24 +16,21 @@ import com.android.nilagut.practicareversi.utils.opcions;
 
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText alias;
-    private RadioButton mida;
-    private CheckBox temps;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
         Button start = (Button) findViewById(R.id.iniciarpartida);
-                start.setOnClickListener(this);
-                alias = (EditText) findViewById(R.id.aliasEditText1);
-                RadioGroup radioGroup = (RadioGroup) findViewById(R.id.size);
-                mida = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-                temps = (CheckBox) findViewById(R.id.timeon);
+        start.setOnClickListener(this);
     }
 
     @Override
-   public void onClick(View view) {
+    public void onClick(View view) {
+        EditText alias = (EditText) findViewById(R.id.aliasEditText1);
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.size);
+        RadioButton mida = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        CheckBox temps = (CheckBox) findViewById(R.id.timeon);
+
         switch (view.getId()) {
             case R.id.iniciarpartida:
                 if (!alias.getText().toString().isEmpty()) {
@@ -48,9 +45,9 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                 }
 
                 break;
-            }
         }
     }
+}
 
 
 

@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.widget.GridView;
 
 import com.android.nilagut.practicareversi.R;
-import com.android.nilagut.practicareversi.utils.Gamelogic;
+import com.android.nilagut.practicareversi.utils.GameLogic;
 import com.android.nilagut.practicareversi.utils.ImageAdapter;
 import com.android.nilagut.practicareversi.utils.opcions;
 
@@ -19,13 +19,14 @@ public class GameActivity extends AppCompatActivity {
 
     private TextView caselles, crono, puntuacio1, puntuacio2;
 
-    private Gamelogic tauler;
+    private GameLogic tauler;
     private GridView grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         jugador1 = getIntent().getStringExtra(opcions.ALIAS);
         MIDA = getIntent().getIntExtra(opcions.MIDA, 4);
         temps = getIntent().getBooleanExtra(opcions.TEMPS, false);
@@ -56,7 +57,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void començar() {
-        tauler = new Gamelogic(MIDA);
+        tauler = new GameLogic(MIDA);
         tauler.CrearTauler(temps, countDown);
     }
 

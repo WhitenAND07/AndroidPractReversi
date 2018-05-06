@@ -1,26 +1,49 @@
 <resources>
-    <string name="app_name">PracticaReversi</string>
-    <!---ToolBar -->
-    <string name="Inici">Inici</string>
-    <string name="Resultats">Resultats</string>
-    <string name="ajuda2">Ajuda</string>
-    <string name="configuration">Configuration</string>
-    <!-- Initial Activity -->
-    <string name="ajuda">AJUDA</string>
-    <string name="comensar">COMENÇAR PARTIDA</string>
-    <string name="sortir">SORTIR</string>
-    <!-- Help Activity -->
-    <string name="instruccions">Al seu torn cada jugador col·loca una peça de manera que toqui una fitxa pròpia o bé que encercli una o més fitxes de l\'adversari entre la peça que s\'acaba de col·locar i una del mateix color. Els discs entre ambdues queden automàticament convertits al color de qui ha tirat. L\'altra persona recupera el torn i intenta revertir la línia que acaba de perdre, envoltant les fitxes amb unes altres pròpies, o bé iniciar una nova línia. Les línies compten en horitzontal, diagonal i vertical i una mateixa fitxa pot capturar peces en diferents files o rengleres, si aconsegueix envoltar-les del color que està a la cara superior. Si un jugador no pot col·locar una peça que tombi cap fitxa o que toqui a una de les seves ja posades al tauler, ha de passar i perdre el torn. Continua l\'alternança fins que cap dels dos pot posar una peça o bé tot el tauler ha quedat cobert de fitxes. Llavors es recompten les peces de cada color i guanya qui en té més.</string>
-    <!-- Results Activity -->
-    <string name="date">Dia i Hora</string>
-    <string name="ValorsLog">Valors del Log</string>
-    <string name="emailDst">Email destinatari</string>
-    <string name="btnEmail">Enviar e-mail</string>
-    <string name="btnNewGame">Nova Partida</string>
+    <string name="app_name">Reversi PRAC Game</string>
+    <string name="btnHelp">Ajuda</string>
+    <string name="btnInit">Comença la Partida</string>
     <string name="btnExit">Sortir</string>
-    <!-- Strings para el Log -->
-    <string name="alias">Alias identificatiu</string>
-    <string name="partida">Partida</string>
-    <string name="encurs">Partida en curs</string>
-    <string name="resultsG">Resultats del Joc - Reversi Game</string>
+
+    <!--- Help Activity -->
+    <string name="HelpTitle">Ajuda</string>
+    <string name="backBtn">Torna</string>
+
+    <!--- Configuration Activity -->
+    <string name="ConfigurationTitle">Configuració</string>
+    <string name="startBtn">Comença</string>
+    <string name="alias">Nick</string>
+    <string name="optionsHint1">Enter your Username: </string>
+    <string name="size">Mida de la Graella: </string>
+    <string name="time">Control del temps: </string>
+    <string name="toastMSG">Si us plau, ompli tots els camps.</string>
+
+
+    <!--- Results Activity -->
+    <string name="ResultsTitle">Resultats</string>
+    <string name="ResultsTitle2">Resultats del joc</string>
+    <string name="date">Data i Hora</string>
+    <string name="resume">Valors del Log</string>
+    <string name="email">E-Mail to send the log</string>
+    <string name="user">Tu: </string>
+    <string name="ia">CPU: </string>
+    <string name="cellsToFinish">Caselles per acabar: </string>
+
+    <!--- Help Activity -->
+    <string name="help">Al seu torn cada jugador col·loca una peça de manera que toqui una fitxa pròpia o bé que encercli una o més fitxes de l\'adversari entre la peça que s\'acaba de col·locar i una del mateix color. Els discs entre ambdues queden automàticament convertits al color de qui ha tirat. L\'altra persona recupera el torn i intenta revertir la línia que acaba de perdre, envoltant les fitxes amb unes altres pròpies, o bé iniciar una nova línia. Les línies compten en horitzontal, diagonal i vertical i una mateixa fitxa pot capturar peces en diferents files o rengleres, si aconsegueix envoltar-les del color que està a la cara superior. Si un jugador no pot col·locar una peça que tombi cap fitxa o que toqui a una de les seves ja posades al tauler, ha de passar i perdre el torn. Continua l\'alternança fins que cap dels dos pot posar una peça o bé tot el tauler ha quedat cobert de fitxes. Llavors es recompten les peces de cada color i guanya qui en té més.</string>
+
+    <!--- Strings for the Log -->
+    <string name="Alias">Alias:</string>
+    <string name="SizeOfTheGrid">Size of the grid:</string>
+    <string name="Win">Has Guanyat!!</string>
+    <string name="Lose">Has Perdut!!</string>
+    <string name="Draw">Has Empatat!!</string>
+    <string name="Difference">Caselles de Diferencia</string>
+    <string name="Left">Caselles Restants.</string>
+    <string name="Time">No queda més temps! </string>
+    <string name="You">Tu: </string>
+    <string name="Player2">El teu Oponent: </string>
+    <string name="sendResults">Enviar e-mail</string>
+    <string name="subject">Resultats de la partida - Reversi Game</string>
+    <string name="Encallat">Estas bloquejat!!</string>
+    <string name="GameRun"> Partida en curs!</string>
 </resources>

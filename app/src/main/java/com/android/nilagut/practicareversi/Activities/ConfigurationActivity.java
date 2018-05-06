@@ -12,7 +12,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.nilagut.practicareversi.R;
-import com.android.nilagut.practicareversi.utils.opcions;
+import com.android.nilagut.practicareversi.utils.Variables;
+
+/**
+ * Els comentaris han sigut un intent de fer que la layout fos visible i invisible un Edit Text per
+ * jugar 2 persones en un mateix dispositiu. En la següent entrega esperem implementar-ho.
+ */
 
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,32 +25,39 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
-        Button start = (Button) findViewById(R.id.iniciarpartida);
-        start.setOnClickListener(this);
+        Button startBtn = (Button) findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        EditText alias = (EditText) findViewById(R.id.aliasEditText1);
+        EditText player = (EditText) findViewById(R.id.aliasEditText1);
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.size);
-        RadioButton mida = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-        CheckBox temps = (CheckBox) findViewById(R.id.timeon);
-
+        RadioButton sizeGrid = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        CheckBox time = (CheckBox) findViewById(R.id.time);
+        //RadioButton OnePlayer = (RadioButton) findViewById(R.id.OnePlayer);
+        //RadioButton TwoPlayers = (RadioButton) findViewById(R.id.TwoPlayers);
+        //EditText editText2 = (EditText) findViewById(R.id.aliasEditText2);
         switch (view.getId()) {
-            case R.id.iniciarpartida:
-                if (!alias.getText().toString().isEmpty()) {
+            case R.id.startBtn:
+                if (!player.getText().toString().isEmpty()) {
                     Intent intent = new Intent(this, GameActivity.class);
-                    intent.putExtra(opcions.ALIAS, alias.getText().toString());
-                    intent.putExtra(opcions.MIDA, Integer.parseInt(mida.getText().toString()));
-                    intent.putExtra(opcions.TEMPS, temps.isChecked());
+                    intent.putExtra(Variables.USER, player.getText().toString());
+                    intent.putExtra(Variables.SIZE, Integer.parseInt(sizeGrid.getText().toString()));
+                    intent.putExtra(Variables.TIME, time.isChecked());
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(this, "Completa tots els camps", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toastMSG, Toast.LENGTH_SHORT).show();
                 }
-
                 break;
         }
+        /*
+        if (OnePlayer.isChecked()) {
+            editText2.setVisibility(View.INVISIBLE);
+        } else if (TwoPlayers.isChecked()) {
+            editText2.setVisibility(View.VISIBLE);
+        } */
     }
 }
 

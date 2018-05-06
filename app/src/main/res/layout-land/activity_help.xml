@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="@string/ajuda2"
+            android:text="@string/HelpTitle"
             android:paddingLeft="@dimen/espaiesquerra"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="@string/instruccions" />
+                android:text="@string/help" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -51,11 +51,11 @@
                 android:src="@drawable/reversi" />
 
             <Button
-                android:id="@+id/botoinici"
+                android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/Inici" />
+                android:text="@string/backBtn" />
         </LinearLayout>
     </ScrollView>
 

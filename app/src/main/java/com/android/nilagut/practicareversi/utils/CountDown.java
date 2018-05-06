@@ -3,18 +3,18 @@ package com.android.nilagut.practicareversi.utils;
 
 import android.os.CountDownTimer;
 
-public class CountDown extends CountDownTimer {
-    private final GameLogic tauler;
+class CountDown extends CountDownTimer {
+    private final GameBoard gameBoard;
     private long timeToFinish;
 
-    CountDown(long millisInFuture, long countDownInterval, GameLogic tauler) {
+    CountDown(long millisInFuture, long countDownInterval, GameBoard gameBoard) {
         super(millisInFuture, countDownInterval);
-        this.tauler = tauler;
+        this.gameBoard = gameBoard;
     }
 
     @Override
     public void onFinish() {
-        tauler.tempsacabat = true;
+        gameBoard.timeEnd = true;
     }
 
     @Override

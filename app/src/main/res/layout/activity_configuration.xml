@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="@string/configuration"
+            android:text="@string/ConfigurationTitle"
             android:paddingLeft="@dimen/espaiesquerra"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -58,7 +58,7 @@
                 android:layout_marginTop="@dimen/esquerraeditext"
                 android:layout_width="@dimen/ampladaeditext"
                 android:layout_height="wrap_content"
-                android:hint="p1"
+                android:hint="@string/alias"
                 android:background="@color/blanc"
                 />
     </LinearLayout>
@@ -78,7 +78,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mida graella"
+        android:text="@string/size"
         android:textColor="@color/blanc"
         android:layout_marginTop="@dimen/separacio"
         android:layout_marginLeft="@dimen/espaiesquerra"
@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/separacio"
         android:textColor="@color/blanc"
-        android:text="Control del temps"
+        android:text="@string/time"
         android:textSize="@dimen/midatextconfig"/>
 
     <LinearLayout
@@ -142,7 +142,7 @@
             />
 
         <CheckBox
-            android:id="@+id/timeon"
+            android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/checkboxmargintop"
@@ -151,7 +151,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/iniciarpartida"
+        android:id="@+id/startBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/separacio"

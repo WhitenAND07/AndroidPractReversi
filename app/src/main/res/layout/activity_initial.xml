@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="@string/Inici"
+            android:text="@string/app_name"
             android:paddingLeft="@dimen/espaiesquerra"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -34,29 +34,29 @@
         android:adjustViewBounds="true" />
 
     <Button
-        android:id="@+id/botoajuda"
+        android:id="@+id/btnHelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/distanciabotons"
-        android:text="@string/ajuda"
+        android:text="@string/btnHelp"
         />
 
     <Button
-        android:id="@+id/botocomensar"
+        android:id="@+id/btnInit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/distanciabotons"
-        android:text="@string/comensar"
+        android:text="@string/btnInit"
         />
 
     <Button
-        android:id="@+id/botosortir"
+        android:id="@+id/btnExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/botosortir"
-        android:text="@string/sortir" />
+        android:text="@string/btnExit" />
 
 </LinearLayout>

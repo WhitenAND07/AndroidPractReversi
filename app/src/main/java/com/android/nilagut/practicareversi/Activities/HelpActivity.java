@@ -10,21 +10,24 @@ import android.widget.Toolbar;
 
 import com.android.nilagut.practicareversi.R;
 
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
-        Button botoinici = (Button) findViewById(R.id.botoinici);
-        botoinici.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v.getId() == R.id.botoinici){
-                    finish();
-                }
-            }
-        });
+        Button back = (Button) findViewById(R.id.backBtn);
+        back.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.backBtn:
+                Intent intent = new Intent(this, InitialActivity.class);
+                startActivity(intent);
+                finish();
+        }
     }
 }
 

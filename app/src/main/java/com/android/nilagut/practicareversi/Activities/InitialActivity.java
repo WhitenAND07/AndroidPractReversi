@@ -16,27 +16,30 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
-        Button botoajuda = (Button) findViewById(R.id.botoajuda);
-        Button botocomensar = (Button) findViewById(R.id.botocomensar);
-        Button botosortir = (Button) findViewById(R.id.botosortir);
-        botoajuda.setOnClickListener(this);
-        botocomensar.setOnClickListener(this);
-        botosortir.setOnClickListener(this);
-
+        Button btnHelp = (Button) findViewById(R.id.btnHelp);
+        Button btnInit = (Button) findViewById(R.id.btnInit);
+        Button btnExit = (Button) findViewById(R.id.btnExit);
+        btnHelp.setOnClickListener(this);
+        btnInit.setOnClickListener(this);
+        btnExit.setOnClickListener(this);
     }
 
-
-    public void onClick(View v){
-        if(v.getId() == R.id.botoajuda){
-            Intent intent = new Intent(this, HelpActivity.class);
-            startActivity(intent);
-        }
-        if(v.getId() == R.id.botocomensar){
-            Intent intent2 = new Intent(this, ConfigurationActivity.class);
-            startActivity(intent2);
-        }
-        if (v.getId() == R.id.botosortir){
-            finish();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnHelp:
+                Intent intent = new Intent(this, HelpActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btnInit:
+                Intent intent1 = new Intent(this, ConfigurationActivity.class);
+                startActivity(intent1);
+                finish();
+                break;
+            case R.id.btnExit:
+                finish();
+                break;
         }
     }
 }

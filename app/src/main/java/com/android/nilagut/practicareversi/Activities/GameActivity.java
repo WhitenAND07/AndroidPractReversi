@@ -6,67 +6,69 @@ import android.widget.TextView;
 import android.widget.GridView;
 
 import com.android.nilagut.practicareversi.R;
-import com.android.nilagut.practicareversi.utils.GameLogic;
+import com.android.nilagut.practicareversi.utils.GameBoard;
 import com.android.nilagut.practicareversi.utils.ImageAdapter;
-import com.android.nilagut.practicareversi.utils.opcions;
+import com.android.nilagut.practicareversi.utils.Variables;
 
 public class GameActivity extends AppCompatActivity {
 
-    private int MIDA;
-    private boolean temps;
-    private String jugador1;
+    private int SIZE;
+    private boolean time;
+    private String player1;
     private int countDown = 40;
 
-    private TextView caselles, crono, puntuacio1, puntuacio2;
+    private TextView cells, timing, score1, score2;
 
-    private GameLogic tauler;
-    private GridView grid;
+    private GameBoard gameBoard;
+    private GridView board;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
-        jugador1 = getIntent().getStringExtra(opcions.ALIAS);
-        MIDA = getIntent().getIntExtra(opcions.MIDA, 4);
-        temps = getIntent().getBooleanExtra(opcions.TEMPS, false);
-        caselles = (TextView) findViewById(R.id.casellespendents);
-        crono = (TextView) findViewById(R.id.timeon);
-        puntuacio1 = (TextView) findViewById(R.id.puntuacio1);
-        puntuacio2 = (TextView) findViewById(R.id.puntuacio2);
-
-        if (savedInstanceState == null) començar();
+        getConfiguration();
+        if (savedInstanceState == null) initGame();
         else getBackState(savedInstanceState);
-        iniciarGridView();
+        initGridView();
     }
 
-    private void iniciarGridView() {
-        ImageAdapter imageAdapter = new ImageAdapter(this, tauler, jugador1, MIDA, temps,
-                caselles, crono, puntuacio1, puntuacio2);
-        this.grid = (GridView) findViewById(R.id.board);
-        this.grid.setAdapter(imageAdapter);
-        this.grid.setBackgroundColor(getResources().getColor(R.color.green));
-        this.grid.setNumColumns(MIDA);
+    private void initGridView() {
+        ImageAdapter imageAdapter = new ImageAdapter(this, gameBoard, player1, SIZE, time,
+                cells, timing, score1, score2);
+        this.board = (GridView) findViewById(R.id.board);
+        this.board.setAdapter(imageAdapter);
+        this.board.setBackgroundColor(getResources().getColor(R.color.green));
+        this.board.setNumColumns(SIZE);
     }
 
     private void getBackState(Bundle savedInstanceState) {
-        tauler = savedInstanceState.getParcelable(opcions.TAULER);
-        this.jugador1 = savedInstanceState.getString(opcions.ALIAS);
-        this.MIDA = savedInstanceState.getInt(opcions.MIDA);
-        this.temps = savedInstanceState.getBoolean(opcions.TEMPS);
+        gameBoard = savedInstanceState.getParcelable(Variables.GAMEBOARD);
+        this.player1 = savedInstanceState.getString(Variables.USER);
+        this.SIZE = savedInstanceState.getInt(Variables.SIZE);
+        this.time = savedInstanceState.getBoolean(Variables.TIME);
     }
 
-    private void començar() {
-        tauler = new GameLogic(MIDA);
-        tauler.CrearTauler(temps, countDown);
+    private void initGame() {
+        gameBoard = new GameBoard(SIZE);
+        gameBoard.initGameBoard(time, countDown);
+    }
+
+    private void getConfiguration() {
+        player1 = getIntent().getStringExtra(Variables.USER);
+        SIZE = getIntent().getIntExtra(Variables.SIZE, 4);
+        time = getIntent().getBooleanExtra(Variables.TIME, false);
+        cells = (TextView) findViewById(R.id.cells);
+        timing = (TextView) findViewById(R.id.timing);
+        score1 = (TextView) findViewById(R.id.score1);
+        score2 = (TextView) findViewById(R.id.score2);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(opcions.TAULER, tauler);
-        outState.putString(opcions.ALIAS, jugador1);
-        outState.putInt(opcions.MIDA, MIDA);
-        outState.putBoolean(opcions.TEMPS, temps);
+        outState.putParcelable(Variables.GAMEBOARD, gameBoard);
+        outState.putString(Variables.USER, player1);
+        outState.putInt(Variables.SIZE, SIZE);
+        outState.putBoolean(Variables.TIME, time);
     }
 }

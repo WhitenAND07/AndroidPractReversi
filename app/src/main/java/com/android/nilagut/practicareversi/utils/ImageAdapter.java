@@ -15,172 +15,181 @@ import android.widget.Toast;
 import com.android.nilagut.practicareversi.Activities.ResultActivity;
 import com.android.nilagut.practicareversi.R;
 
-public class ImageAdapter extends BaseAdapter{
+public class ImageAdapter extends BaseAdapter {
 
-    private Activity activitat;
-    private GameLogic tauler;
-    private TextView caselles, puntuacio1, puntuacio2;
-    private TextView temps;
-    private boolean ambTemps;
-    private int MIDA;
-    private String nom;
+    private Activity mContext;
+    private GameBoard gameBoard;
+    private TextView cells, score1, score2;
+    private TextView timing;
+    private boolean withTime;
+    private int SIZE;
+    private String alias;
+    private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
+    private ArtificialIntelligence ia;
 
-    public ImageAdapter(Activity a, GameLogic tauler, String nom, int mida,
-                        boolean ambTemps, TextView caselles, TextView temps, TextView puntuacio1,
-                        TextView puntuacio2){
-        activitat = a;
-        this.tauler = tauler;
-        this.nom = nom;
-        this.MIDA = mida;
-        this.ambTemps = ambTemps;
-        this.caselles = caselles;
-        this.temps = temps;
-        this.puntuacio1 = puntuacio1;
-        this.puntuacio2 = puntuacio2;
-        actualitzarMarcadors();
-        actualitzarTemps();
 
+    public ImageAdapter(Activity c, GameBoard gameBoard, String alias, int size,
+                        boolean withTime, TextView cells, TextView timing, TextView score1,
+                        TextView score2) {
+        mContext = c;
+        this.gameBoard = gameBoard;
+        this.alias = alias;
+        this.SIZE = size;
+        this.withTime = withTime;
+        this.cells = cells;
+        this.timing = timing;
+        this.score1 = score1;
+        this.score2 = score2;
+        updateTextViews();
+        updateTime();
+        this.ia = new ArtificialIntelligence(this.SIZE);
     }
 
-    private void actualitzarMarcadors() {
-        this.caselles.setText(String.valueOf(MIDA * MIDA - tauler.getCasellesUsuari().size() -
-            tauler.getCasellesPC().size()));
-        this.puntuacio1.setText(String.valueOf(tauler.getCasellesUsuari().size()));
-        this.puntuacio2.setText(String.valueOf(tauler.getCasellesPC().size()));
-    }
-
-    private void actualitzarTemps() {
-        if(ambTemps){
-            temps.setText(String.valueOf(tauler.obtenirTemps() / opcions.SEGON));
-            temps.setTextColor(activitat.getResources().getColor(R.color.colorAccent));
-        }
-        else{
-            temps.setText(String.valueOf((System.currentTimeMillis() / opcions.SEGON) - tauler.temps));
+    private void updateTime() {
+        if (withTime) {
+            timing.setText(String.valueOf(gameBoard.getTime() / Variables.SEGON));
+            timing.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
+        } else {
+            timing.setText(String.valueOf((System.currentTimeMillis() / Variables.SEGON) -
+                    gameBoard.time));
         }
     }
 
     @Override
     public int getCount() {
-        return MIDA*MIDA;
+        return SIZE * SIZE;
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int i) {
         return null;
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int i) {
         return 0;
     }
 
-    public View getView(int posicio, View convertView, ViewGroup parent){
-        Button boto;
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Button btn;
         if (convertView == null) {
-            boto = new Button(activitat);
+            btn = new Button(mContext);
             if (getCount() == 64) {
-                boto.setLayoutParams(new GridView.LayoutParams(45, 45));
-                boto.setPadding(5, 5, 5, 5);
+                btn.setLayoutParams(new GridView.LayoutParams(45, 45));
+                btn.setPadding(5, 5, 5, 5);
             } else if (getCount() == 36) {
-                boto.setLayoutParams(new GridView.LayoutParams(60, 60));
-                boto.setPadding(5, 5, 5, 5);
+                btn.setLayoutParams(new GridView.LayoutParams(60, 60));
+                btn.setPadding(5, 5, 5, 5);
             } else {
-                boto.setLayoutParams(new GridView.LayoutParams(100, 100));
-                boto.setPadding(5, 5, 5, 5);
+                btn.setLayoutParams(new GridView.LayoutParams(100, 100));
+                btn.setPadding(5, 5, 5, 5);
             }
 
         } else {
-            boto = (Button) convertView;
+            btn = (Button) convertView;
         }
 
-        boto.setBackgroundResource(afegirFitxa(posicio));
-        boto.setOnClickListener(new MyOnClickListener(posicio, activitat));
-        boto.setId(posicio);
-        return boto;
+        btn.setBackgroundResource(setPiece(position));
+        btn.setOnClickListener(new MyOnClickListener(position, mContext));
+        btn.setId(position);
+        return btn;
     }
 
-    private int afegirFitxa(int posicio) {
-        if(tauler.getCasellesUsuari().contains(posicio)){
+    private int setPiece(int position) {
+        if (gameBoard.getPositionsUser().contains(position)) {
             return R.drawable.redpiece;
-        }
-        else if(tauler.getCasellesPC().contains(posicio)){
+        } else if (gameBoard.getPositionsComputer().contains(position)) {
             return R.drawable.blackpiece;
-        }
-        else if(tauler.possiblesPosicionsCaselles().contains(posicio)){
+        } else if (gameBoard.getPositionsPossibleCells().contains(position)) {
             return R.drawable.blackpiece;
-        }
-        else{
+        } else {
             return R.drawable.blackpiece;
         }
     }
 
-    private class MyOnClickListener implements View.OnClickListener {
-        private final int posicio;
-        private Context context;
-
-        MyOnClickListener(int posicio, Context context){
-            this.posicio = posicio;
-            this.context = context;
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (tauler.possiblesPosicionsCaselles().contains(posicio)) {
-                tirar(posicio);
-                if (acabat()) createNewActivity();
-            } else {
-                Toast.makeText(context, "Moviment invàlid. torna-ho a provar", Toast.LENGTH_SHORT).show();
-            }
-        }
+    private void updateTextViews() {
+        this.cells.setText(String.valueOf(SIZE * SIZE - gameBoard.getPositionsUser().size() -
+                gameBoard.getPositionsComputer().size()));
+        this.score1.setText(String.valueOf(gameBoard.getPositionsUser().size()));
+        this.score2.setText(String.valueOf(gameBoard.getPositionsComputer().size()));
     }
 
     private void createNewActivity() {
-        int tempsRestant;
-        if (ambTemps){
-            tempsRestant = tauler.obtenirTemps() / opcions.SEGON;
+        int timeLeft;
+        if (withTime) {
+            timeLeft = gameBoard.getTime() / Variables.SEGON;
+        } else {
+            timeLeft = (int) (System.currentTimeMillis() / Variables.SEGON - gameBoard.time);
         }
-        else{
-            tempsRestant = (int) (System.currentTimeMillis() / opcions.SEGON - tauler.temps);
-        }
-
-        Intent intent = new Intent(activitat, ResultActivity.class);
-        intent.putExtra(opcions.ALIAS,nom);
-        intent.putExtra(opcions.TEMPS, ambTemps);
-        intent.putExtra(opcions.TEMPSRESTANT, tempsRestant);
-        intent.putExtra(opcions.PUNTUACIO1, Integer.parseInt(puntuacio1.toString()));
-        intent.putExtra(opcions.PUNTUACIO2, Integer.parseInt(puntuacio2.toString()));
-        intent.putExtra(opcions.MIDA, MIDA);
-        activitat.startActivity(intent);
-        activitat.finish();
+        Intent intent = new Intent(mContext, ResultActivity.class);
+        intent.putExtra(Variables.USER, alias);
+        intent.putExtra(Variables.TIME, withTime);
+        intent.putExtra(Variables.TIME_LEFT, timeLeft);
+        intent.putExtra(Variables.PLAYER1_SCORE, Integer.parseInt(score1.getText().toString()));
+        intent.putExtra(Variables.PLAYER2_SCORE, Integer.parseInt(score2.getText().toString()));
+        intent.putExtra(Variables.SIZE, SIZE);
+        mContext.startActivity(intent);
+        mContext.finish();
     }
 
-    private boolean acabat() {
-        if (tauler.finalitzat()) {
-            return true;
-        } else {
-            if (tauler.tempsacabat) {
-                return true;
-            } else if (tauler.possiblesPosicionsCaselles().size() == 0) {
-                tauler.canviTorn();
-                tauler.getpossiblesPosicions();
-                notifyDataSetChanged();
-                return tauler.possiblesPosicionsCaselles().size() == 0;
+    private class MyOnClickListener implements View.OnClickListener {
+        private final int position;
+        private Context context;
+
+        MyOnClickListener(int position, Context context) {
+            this.position = position;
+            this.context = context;
+        }
+
+        public void onClick(View v) {
+            if (gameBoard.getPositionsPossibleCells().contains(position)) {
+                doTheMovement(position);
+                if (isFinal()) createNewActivity();
+                if (intelligenceActivated) {
+                    doTheMovement(ia.getBestMovement(gameBoard.getPositionsPossibleCells()));
+                }
+                if (isFinal()) createNewActivity();
             } else {
-                return false;
+                Toast.makeText(context, "Invalid Movement. Try again", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-    private void omplirCaselles(int position){
-        for(int caselles : tauler.getCasellesAcanviar(position)){
-            tauler.omplirCasella(caselles);
+
+        private void doTheMovement(int position) {
+            fillTheCells(position);
+            gameBoard.changeTurn();
+            gameBoard.getPositionsPossible();
+            update();
         }
-    }
-    private void tirar(int posicio) {
-        omplirCaselles(posicio);
-        tauler.canviTorn();
-        tauler.getpossiblesPosicions();
-        actualitzarMarcadors();
-        actualitzarTemps();
-        notifyDataSetChanged();
+
+        private void update() {
+            updateTextViews();
+            updateTime();
+            notifyDataSetChanged();
+        }
+
+        private void fillTheCells(int position) {
+            for (int cells :
+                    gameBoard.getCellsToChange(position)) {
+                gameBoard.fillCell(cells);
+            }
+        }
+
+        private boolean isFinal() {
+            if (gameBoard.isEnd()) {
+                return true;
+            } else {
+                if (gameBoard.timeEnd) {
+                    return true;
+                } else if (gameBoard.getPositionsPossibleCells().size() == 0) {
+                    gameBoard.changeTurn();
+                    gameBoard.getPositionsPossible();
+                    notifyDataSetChanged();
+                    return gameBoard.getPositionsPossibleCells().size() == 0;
+                } else {
+                    return false;
+                }
+            }
+        }
     }
 }

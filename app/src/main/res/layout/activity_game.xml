@@ -98,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:text="@string/user"
+                android:drawableLeft="@drawable/redpiecelittle"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
@@ -111,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:text="@string/ia"
+                android:drawableLeft="@drawable/blackpiecelittle"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 

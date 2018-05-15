@@ -98,18 +98,21 @@
                     android:id="@+id/resultButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/correu"
                     android:text="@string/sendResults" />
 
                 <Button
                     android:id="@+id/ResultNewButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/comensar"
                     android:text="@string/btnInit" />
 
                 <Button
                     android:id="@+id/ResultExitButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/sortir"
                     android:text="@string/btnExit" />
 
             </LinearLayout>

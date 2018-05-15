@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableLeft="@drawable/opcions"
             android:text="@string/btnHelp" />
 
         <Button
@@ -44,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableLeft="@drawable/redpiecelittle"
             android:text="@string/btnInit" />
 
         <Button
@@ -51,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableLeft="@drawable/sortir"
             android:text="@string/btnExit" />
     </TableRow>
 </TableLayout>

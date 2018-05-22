@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,6 +25,7 @@ import com.android.nilagut.practicareversi.utils.Variables;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private Toolbar appbar;
     private int size;
     private boolean withTime;
     private int timeLeft;
@@ -37,18 +41,24 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
         date = (EditText) findViewById(R.id.date);
         resume = (EditText) findViewById(R.id.resume);
         email = (EditText) findViewById(R.id.email);
+
         Button exit = (Button) findViewById(R.id.ResultExitButton);
         exit.setOnClickListener(this);
+
         Button newGame = (Button) findViewById(R.id.ResultNewButton);
         newGame.setOnClickListener(this);
+
         Button send = (Button) findViewById(R.id.resultButton);
         send.setOnClickListener(this);
+
         if (savedInstanceState != null) {
             recuperateInstances(savedInstanceState);
-        } else {
+        }
+        else {
             Intent intent = getIntent();
             getIntentValues(intent);
             setEditTexts();
@@ -86,7 +96,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Time, R.drawable.timer);
-        } else if (score1 > score2) {
+        }
+        else if (score1 > score2) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
                     getString(R.string.Win) + getString(R.string.You) + String.valueOf(score1) +
@@ -94,7 +105,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Win, R.drawable.copa);
-        } else if (score2 > score1) {
+        }
+        else if (score2 > score1) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
                     getString(R.string.Lose) + getString(R.string.You) + String.valueOf(score1) +
@@ -102,7 +114,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Lose, R.drawable.caca);
-        } else if (score1 == score2) {
+        }
+        else if (score1 == score2) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
                     getString(R.string.Draw) + getString(R.string.You) + String.valueOf(score1) +
@@ -110,7 +123,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Draw, R.drawable.empate);
-        } else if (score1 == score2 && timeLeft > 0) {
+        }
+        else if (score1 == score2 && timeLeft > 0) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
                     getString(R.string.Encallat) + getString(R.string.You) + String.valueOf(score1) +
@@ -154,7 +168,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.ResultNewButton:
-                Intent intent = new Intent(this, ConfigurationActivity.class);
+                Intent intent = new Intent(this, GameActivity.class);
                 finish();
                 startActivity(intent);
                 break;
@@ -165,9 +179,29 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                     intent1.putExtra(Intent.EXTRA_SUBJECT, R.string.subject);
                     intent1.putExtra(Intent.EXTRA_TEXT, resume.getText().toString());
                     startActivity(intent1);
-                } else {
+                }
+                else {
                     Toast.makeText(this, "The field email it's empty", Toast.LENGTH_SHORT).show();
                 }
+
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.config_option:
+                Intent intent1 = new Intent(this, ConfigurationActivity.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
 
         }
     }

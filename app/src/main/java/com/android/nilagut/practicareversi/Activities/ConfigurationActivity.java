@@ -35,9 +35,11 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.size);
         RadioButton sizeGrid = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
         CheckBox time = (CheckBox) findViewById(R.id.time);
+
         //RadioButton OnePlayer = (RadioButton) findViewById(R.id.OnePlayer);
         //RadioButton TwoPlayers = (RadioButton) findViewById(R.id.TwoPlayers);
         //EditText editText2 = (EditText) findViewById(R.id.aliasEditText2);
+
         switch (view.getId()) {
             case R.id.startBtn:
                 if (!player.getText().toString().isEmpty()) {

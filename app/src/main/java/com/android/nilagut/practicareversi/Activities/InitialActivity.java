@@ -27,6 +27,7 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
         Button btnHelp = (Button) findViewById(R.id.btnHelp);
         Button btnInit = (Button) findViewById(R.id.btnInit);
         Button btnExit = (Button) findViewById(R.id.btnExit);
+        Button btnConsult = (Button) findViewById(R.id.btnConsult);
         btnHelp.setOnClickListener(this);
         btnInit.setOnClickListener(this);
         btnExit.setOnClickListener(this);
@@ -40,11 +41,19 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 finish();
                 break;
+
             case R.id.btnInit:
                 Intent intent1 = new Intent(this, GameActivity.class);
                 startActivity(intent1);
                 finish();
                 break;
+
+            case R.id.btnConsult:
+                Intent intent2 = new Intent(this, ConsultActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+
             case R.id.btnExit:
                 finish();
                 break;

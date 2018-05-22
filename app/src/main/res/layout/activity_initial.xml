@@ -43,11 +43,21 @@
         />
 
     <Button
+        android:id="@+id/btnConsult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/distanciabotons"
+        android:text="Consultar patides"
+        android:drawableLeft="@drawable/consultar"
+        />
+
+    <Button
         android:id="@+id/btnExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/botosortir"
+        android:layout_marginTop="@dimen/espaitext"
         android:drawableLeft="@drawable/sortir"
         android:text="@string/btnExit" />
 

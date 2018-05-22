@@ -24,7 +24,6 @@ import com.android.nilagut.practicareversi.utils.Variables;
 
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
-
     private Toolbar appbar;
     private int size;
     private boolean withTime;
@@ -41,6 +40,10 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        appbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(appbar);
+
 
         date = (EditText) findViewById(R.id.date);
         resume = (EditText) findViewById(R.id.resume);

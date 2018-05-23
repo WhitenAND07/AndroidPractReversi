@@ -62,4 +62,9 @@
     <string name="selectTimeTitle">Temps de Joc</string>
     <string name="selectTimeSummary">Marca el temps que vols com a limit</string>
     <string name="titleDialog">Introdueix valor</string>
+    <!--KEYS-->
+    <string name="user_key">user</string>
+    <string name="board_key">board</string>
+    <string name="time_key">time</string>
+    <string name="selectTime_key">select_time</string>
 </resources>

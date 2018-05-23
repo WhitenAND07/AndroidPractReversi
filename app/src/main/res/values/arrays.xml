@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="board1">selectTime1</string-array>
+    <string-array name="board2">selectTime1</string-array>
+    <string-array name="selectTime1">selectTime1</string-array>
+    <string-array name="selectTime2">selectTime1</string-array>
+</resources>

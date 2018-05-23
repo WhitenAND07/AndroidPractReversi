@@ -30,6 +30,7 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
         Button btnConsult = (Button) findViewById(R.id.btnConsult);
         btnHelp.setOnClickListener(this);
         btnInit.setOnClickListener(this);
+        btnConsult.setOnClickListener(this);
         btnExit.setOnClickListener(this);
     }
 

@@ -36,6 +36,14 @@
             android:layout_weight="2"
             android:drawableLeft="@drawable/redpiecelittle"
             android:text="@string/btnInit" />
+        <Button
+            android:id="@+id/btnConsult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Consultar patides"
+            android:drawableLeft="@drawable/consultar"
+            />
 
         <Button
             android:id="@+id/btnExit"

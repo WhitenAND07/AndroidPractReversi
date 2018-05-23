@@ -21,8 +21,6 @@ public class ConsultActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consult);
 
-        appbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(appbar);
     }
 
     @Override

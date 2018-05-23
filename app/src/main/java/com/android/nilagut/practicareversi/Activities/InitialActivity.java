@@ -1,6 +1,7 @@
 package com.android.nilagut.practicareversi.Activities;
 
 import android.content.Intent;
+import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Button;
 
 import com.android.nilagut.practicareversi.Activities.ConfigurationActivity;
 import com.android.nilagut.practicareversi.Activities.HelpActivity;
+import com.android.nilagut.practicareversi.Fragments.PreferencesFragment;
 import com.android.nilagut.practicareversi.R;
 
 public class InitialActivity extends AppCompatActivity implements View.OnClickListener {
@@ -71,7 +73,7 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.config_option:
-                Intent intent1 = new Intent(this, ConfigurationActivity.class);
+                Intent intent1 = new Intent(this, PreferencesFragment.class);
                 startActivity(intent1);
                 return true;
             default:

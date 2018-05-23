@@ -3,6 +3,7 @@ package com.android.nilagut.practicareversi.Activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
+import com.android.nilagut.practicareversi.Fragments.PreferencesFragment;
 import com.android.nilagut.practicareversi.R;
 import com.android.nilagut.practicareversi.utils.Variables;
 
@@ -200,7 +202,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.config_option:
-                Intent intent1 = new Intent(this, ConfigurationActivity.class);
+                Intent intent1 = new Intent(this, PreferencesFragment.class);
                 startActivity(intent1);
                 return true;
             default:

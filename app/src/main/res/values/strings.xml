@@ -65,6 +65,7 @@
     <!--KEYS-->
     <string name="user_key">user</string>
     <string name="board_key">board</string>
+    <string name="board_Default_key">4</string>
     <string name="time_key">time</string>
     <string name="selectTime_key">select_time</string>
 </resources>

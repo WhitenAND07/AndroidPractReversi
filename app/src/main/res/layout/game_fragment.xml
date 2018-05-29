@@ -95,7 +95,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
-                android:drawableLeft="@drawable/user"
                 android:text="@string/user"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />

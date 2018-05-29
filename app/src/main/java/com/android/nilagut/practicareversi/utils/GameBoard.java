@@ -91,6 +91,10 @@ public class GameBoard implements Parcelable {
         }
     }
 
+    int getTurn() {
+        return turn;
+    }
+
     void changeTurn() {
         if (turn == 1) {
             this.turn = 2;

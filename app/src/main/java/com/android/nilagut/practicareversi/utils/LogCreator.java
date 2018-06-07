@@ -31,7 +31,7 @@ public class LogCreator implements Serializable {
         }
     }
 
-    private String logValues(GameBoard gameBoard, Integer position){
+    public String logValues(GameBoard gameBoard, Integer position){
 
         if(gameBoard.getTurn()==1){
             log += "Turn 1" + "\n";

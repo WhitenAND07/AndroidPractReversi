@@ -87,4 +87,7 @@ public class GameFragment extends Fragment {
         board.setBackgroundColor(getResources().getColor(R.color.green));
         board.setNumColumns(size);
     }
+    public interface GameListener {
+        void onGameItemSelected(Integer position, GameBoard gameBoard);
+    }
 }

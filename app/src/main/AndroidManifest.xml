@@ -18,7 +18,6 @@
         <activity android:name=".Activities.ConfigurationActivity"/>
         <activity android:name=".Activities.GameActivity"/>
         <activity android:name=".Activities.ResultActivity"/>
-        <activity android:name=".Activities.ConsultActivity"/>
         <activity android:name=".Fragments.PreferencesFragment"/>
     </application>
 

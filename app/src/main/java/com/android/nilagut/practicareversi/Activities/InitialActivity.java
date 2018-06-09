@@ -2,6 +2,7 @@ package com.android.nilagut.practicareversi.Activities;
 
 import android.content.Intent;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Button;
 
 import com.android.nilagut.practicareversi.Activities.ConfigurationActivity;
 import com.android.nilagut.practicareversi.Activities.HelpActivity;
+import com.android.nilagut.practicareversi.Fragments.ConsultFragment;
 import com.android.nilagut.practicareversi.Fragments.PreferencesFragment;
 import com.android.nilagut.practicareversi.R;
 
@@ -28,12 +30,13 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
 
         Button btnHelp = (Button) findViewById(R.id.btnHelp);
         Button btnInit = (Button) findViewById(R.id.btnInit);
-        Button btnExit = (Button) findViewById(R.id.btnExit);
         Button btnConsult = (Button) findViewById(R.id.btnConsult);
+        Button btnExit = (Button) findViewById(R.id.btnExit);
         btnHelp.setOnClickListener(this);
         btnInit.setOnClickListener(this);
         btnConsult.setOnClickListener(this);
         btnExit.setOnClickListener(this);
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
     }
 
     @Override
@@ -52,7 +55,7 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btnConsult:
-                Intent intent2 = new Intent(this, ConsultActivity.class);
+                Intent intent2 = new Intent(this, ConsultFragment.class);
                 startActivity(intent2);
                 finish();
                 break;

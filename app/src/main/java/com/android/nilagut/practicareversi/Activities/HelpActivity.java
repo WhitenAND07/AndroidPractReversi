@@ -19,7 +19,6 @@ public class HelpActivity extends AppCompatActivity implements View.OnClickListe
         Button back = (Button) findViewById(R.id.backBtn);
         back.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

@@ -1,29 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
-    android:orientation="vertical"
-    tools:context=".Activities.ConsultActivity">
+    android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <TextView
+        android:id="@+id/title_db_activity"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+        android:layout_height="wrap_content"
+        android:text="@string/DatabaseLog" />
 
-        <TextView
-            android:id="@+id/titleConsult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/ConsultTitle"
-            android:paddingLeft="@dimen/espaiesquerra"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+    <fragment
+        android:id="@+id/ListFrag"
+        class="com.android.nilagut.practicareversi.Fragments.ListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="100" />
 
-    </android.support.v7.widget.Toolbar>
 
+    <Button
+        android:id="@+id/back_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/sortir"
+        android:drawableStart="@drawable/sortir"
+        android:onClick="onClick"
+        android:text="@string/btnExit" />
 </LinearLayout>

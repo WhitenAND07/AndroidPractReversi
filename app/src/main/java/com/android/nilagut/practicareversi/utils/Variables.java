@@ -20,4 +20,5 @@ public class Variables {
     public static String ResultLog = "ResultLog";
     public static String ResultEmail = "ResultEmail";
 
+
 }

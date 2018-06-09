@@ -8,20 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GameBoard implements Parcelable {
-    public static final Creator<GameBoard> CREATOR = new Creator<GameBoard>() {
-        @Override
-        public GameBoard createFromParcel(Parcel in) {
-            return new GameBoard(in);
-        }
-
-        @Override
-        public GameBoard[] newArray(int size) {
-            return new GameBoard[size];
-        }
-    };
     public long time;
     boolean timeEnd = false;
-    // CELL FREE = 0 / CELL PLAYER = 1 / CELL COMPUTER = 2
     private int turn = 1;
     private int size;
     private int[][] gameBoard;
@@ -30,6 +18,17 @@ public class GameBoard implements Parcelable {
     private List<Integer> PossibleCells = new ArrayList<>();
     private HashMap<Integer, List<Integer>> cellsToChange = new HashMap<>();
     private CountDown timer;
+
+    public static final Creator<GameBoard> CREATOR = new Creator<GameBoard>() {
+        @Override
+        public GameBoard createFromParcel(Parcel in) {
+            return new GameBoard(in);
+        }
+        @Override
+        public GameBoard[] newArray(int size) {
+            return new GameBoard[size];
+        }
+    };
 
     public GameBoard(int size) {
         this.size = size;
@@ -362,9 +361,6 @@ public class GameBoard implements Parcelable {
     boolean isEnd() {
         return size * size - getPositionsUser().size() - getPositionsComputer().size() == 0;
     }
-
-    //For save and recuperate the instances
-    //http://androcode.es/2012/12/trabajando-con-parcelables/
 
     @Override
     public int describeContents() {

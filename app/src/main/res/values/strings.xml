@@ -50,6 +50,9 @@
     <string name="subject">Resultats de la partida - Reversi Game</string>
     <string name="Encallat">Estas bloquejat!!</string>
     <string name="GameRun"> Partida en curs!</string>
+    <string name="DatabaseLog">Database of Games</string>
+    <string name="PLAYERS">Jugadors</string>
+    <string name="save">Guardar</string>
     
     <!-- Strings for the preferences -->
     <string name="userTitle">Nom d\'usuari</string>

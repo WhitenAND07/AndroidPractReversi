@@ -1,6 +1,7 @@
 package com.android.nilagut.practicareversi.utils;
 
 
+import android.app.Fragment;
 import android.widget.BaseAdapter;
 import android.app.Activity;
 import android.content.Context;
@@ -32,7 +33,7 @@ public class ImageAdapter extends BaseAdapter {
 
     public ImageAdapter(Activity c, GameBoard gameBoard, String alias, int size,
                         boolean withTime, TextView cells, TextView timing, TextView score1,
-                        TextView score2) {
+                        TextView score2, GameFragment.GameListener listener) {
 
         this.listener = listener;
         mContext = c;
@@ -135,6 +136,7 @@ public class ImageAdapter extends BaseAdapter {
         intent.putExtra(Variables.SIZE, SIZE);
         mContext.startActivity(intent);
         mContext.finish();
+        LogCreator.deleteLog();
     }
 
     private class MyOnClickListener implements View.OnClickListener {

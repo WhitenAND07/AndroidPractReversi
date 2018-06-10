@@ -1,6 +1,5 @@
 package com.android.nilagut.practicareversi.Fragments;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -60,6 +59,7 @@ public class GameFragment extends Fragment {
                 "60"));
         size = Integer.valueOf(prefs.getString(getResources().getString(R.string.board_key),
                 getResources().getString(R.string.board_Default_key)));
+
         cells = (TextView) getView().findViewById(R.id.cells);
         timing = (TextView) getView().findViewById(R.id.timing);
         score1 = (TextView) getView().findViewById(R.id.score1);
@@ -84,7 +84,7 @@ public class GameFragment extends Fragment {
     }
     private void startGridView (){
         ImageAdapter imageAdapter = new ImageAdapter(getActivity(), boardGame, user, size, time,
-                cells, timing, score1, score2);
+                cells, timing, score1, score2, listener);
         GridView board = (GridView) getView().findViewById(R.id.board);
         board.setAdapter(imageAdapter);
         board.setBackgroundColor(getResources().getColor(R.color.green));

@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/distanciabotons"
-        android:text="Consultar patides"
+        android:text="@string/ConsultTitle"
         android:drawableLeft="@drawable/consultar"
         />
 

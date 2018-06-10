@@ -26,7 +26,7 @@ public class GameActivity extends FragmentActivity implements GameFragment.GameL
         GameFragment gameF = (GameFragment) getSupportFragmentManager().findFragmentById
                 (R.id.fragmentGame);
 
-        GameFragment.setGameListener(this);
+        gameF.setGameListener(this);
         LogCreator logCreator = LogCreator.getINSTANCE(this);
     }
 

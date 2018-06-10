@@ -15,12 +15,14 @@
         android:summary="@string/boardSummary"
         android:dialogTitle="@string/titleDialog"
         android:entries="@array/board1"
-        android:entryValues="@array/board2" />
+        android:entryValues="@array/board2"
+        android:defaultValue="4"/>
     <CheckBoxPreference
         android:id="@+id/time_config"
         android:key="@string/time_key"
         android:title="@string/timeTitle"
-        android:summary="@string/timeSummary"/>
+        android:summary="@string/timeSummary"
+        android:defaultValue="true"/>
     <ListPreference
         android:id="@+id/select_time"
         android:key="@string/selectTime_key"
@@ -28,6 +30,7 @@
         android:summary="@string/selectTimeSummary"
         android:dialogTitle="@string/titleDialog"
         android:entries="@array/selectTime1"
-        android:entryValues="@array/selectTime2"/>
+        android:entryValues="@array/selectTime2"
+        android:defaultValue="60"/>
     </PreferenceCategory>
 </PreferenceScreen>

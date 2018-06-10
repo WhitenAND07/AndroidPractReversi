@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
 
 import com.android.nilagut.practicareversi.Activities.DetailActivity;
 import com.android.nilagut.practicareversi.Activities.InitialActivity;
@@ -29,10 +30,10 @@ public class ConsultFragment extends FragmentActivity implements ListFragment.Ga
     @Override
     public void onGameSelected(int position) {
         DetailFragment fgdet = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.FrgDetalle);
-        boolean hayDetalle = (fgdet != null && fgdet.isInLayout());
-        if (hayDetalle) {
+        if (fgdet != null && fgdet.isInLayout()) {
             fgdet.viewDetails(position);
-        } else {
+        }
+        else {
             Intent intent = new Intent(this, DetailActivity.class);
             intent.putExtra(DetailActivity.POSITION, position);
             startActivity(intent);

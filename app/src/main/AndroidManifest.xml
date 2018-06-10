@@ -14,11 +14,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Fragments.PreferencesFragment"/>
+        <activity android:name=".Fragments.ConsultFragment"/>
+        <activity android:name=".Activities.DetailActivity"/>
         <activity android:name=".Activities.HelpActivity"/>
         <activity android:name=".Activities.ConfigurationActivity"/>
         <activity android:name=".Activities.GameActivity"/>
         <activity android:name=".Activities.ResultActivity"/>
-        <activity android:name=".Fragments.PreferencesFragment"/>
     </application>
 
 </manifest>

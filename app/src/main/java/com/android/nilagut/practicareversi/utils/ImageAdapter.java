@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.nilagut.practicareversi.Fragments.GameFragment;
 import com.android.nilagut.practicareversi.Activities.ResultActivity;
 import com.android.nilagut.practicareversi.R;
 
@@ -24,13 +25,16 @@ public class ImageAdapter extends BaseAdapter {
     private boolean withTime;
     private int SIZE;
     private String alias;
-    private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
+    private boolean intelligenceActivated = true;
     private ArtificialIntelligence ia;
+    private GameFragment.GameListener listener;
 
 
     public ImageAdapter(Activity c, GameBoard gameBoard, String alias, int size,
                         boolean withTime, TextView cells, TextView timing, TextView score1,
                         TextView score2) {
+
+        this.listener = listener;
         mContext = c;
         this.gameBoard = gameBoard;
         this.alias = alias;
@@ -160,6 +164,7 @@ public class ImageAdapter extends BaseAdapter {
             gameBoard.changeTurn();
             gameBoard.getPositionsPossible();
             update();
+            listener.onGameItemSelected(position, gameBoard);
         }
 
         private void update() {

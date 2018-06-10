@@ -1,5 +1,7 @@
 package com.android.nilagut.practicareversi.Fragments;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -24,6 +26,7 @@ public class GameFragment extends Fragment {
     private int size;
     private TextView cells, score1, score2, timing;
     private GameBoard boardGame;
+    public GameListener listener;
 
 
     @Override
@@ -89,5 +92,20 @@ public class GameFragment extends Fragment {
     }
     public interface GameListener {
         void onGameItemSelected(Integer position, GameBoard gameBoard);
+    }
+
+    public void onAttach(Activity c){
+        super.onAttach(c);
+        try {
+            listener = (GameListener) c;
+        }
+
+        catch (ClassCastException e){
+            throw new ClassCastException(c.toString()+"No listener");
+        }
+    }
+
+    public void setGameListener(GameListener listener){
+       this.listener = listener;
     }
 }

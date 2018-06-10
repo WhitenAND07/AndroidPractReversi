@@ -11,15 +11,18 @@ import com.android.nilagut.practicareversi.R;
 
 public class LogCreator implements Serializable {
 
+    private static LogCreator INSTANCE = null;
+
     private final boolean timeActive;
     private String log = "";
     private String time;
     private String size;
 
+
     private LogCreator(Activity ac) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ac);
         timeActive = prefs.getBoolean(ac.getString(R.string.time_key), false);
-        size = prefs.getString(ac.getString(R.string.SizeOfTheGrid), "No s'ha pogut obtenir");
+        size = prefs.getString(ac.getString(R.string.SizeOfTheGrid), "can't get it");
         time = new SimpleDateFormat("hh:mm:ss").format(new Date());
         log += "Alias: " + prefs.getString(ac.getString(R.string.user_key), "Nom invàlid") + "\n"
                 + "Grid Size: " + size + "\n";
@@ -29,6 +32,17 @@ public class LogCreator implements Serializable {
             log += "Time Diasbled";
 
         }
+    }
+
+    public static LogCreator getINSTANCE(Activity c) {
+        if (INSTANCE == null) {
+            INSTANCE = new LogCreator(c);
+        }
+        return INSTANCE;
+    }
+
+    static void deleteLog() {
+        INSTANCE = null;
     }
 
     public String logValues(GameBoard gameBoard, Integer position){

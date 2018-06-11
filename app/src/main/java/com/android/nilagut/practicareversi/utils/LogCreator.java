@@ -27,9 +27,9 @@ public class LogCreator implements Serializable {
         log += "Alias: " + prefs.getString(ac.getString(R.string.user_key), "Nom invàlid") + "\n"
                 + "Grid Size: " + size + "\n";
         if (timeActive) {
-            log += "Time Enabled";
+            log += "Time Enabled \n";
         } else {
-            log += "Time Diasbled";
+            log += "Time Diasbled \n";
 
         }
     }
@@ -61,7 +61,7 @@ public class LogCreator implements Serializable {
                 + "\n";
 
 
-        log += "Time start: " + this.time + "seconds;  Time finish: " + new SimpleDateFormat("hh:mm:ss").format(new Date());;
+        log += "Time start: " + this.time + "seconds;  Time finish: " + new SimpleDateFormat("hh:mm:ss").format(new Date()) + "\n";;
 
         if (timeActive) {
             log += "Remaining time: " + String.valueOf(gameBoard.getTime() / Variables.SEGON) +

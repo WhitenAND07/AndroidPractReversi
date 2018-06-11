@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <fragment
-        android:id="@+id/GameFragment"
+        android:id="@+id/fragmentGame"
         class="com.android.nilagut.practicareversi.Fragments.GameFragment"
         android:layout_width="match_parent"
         android:layout_height="0px"

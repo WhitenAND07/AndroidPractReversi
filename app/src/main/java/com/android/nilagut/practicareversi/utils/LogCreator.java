@@ -60,8 +60,13 @@ public class LogCreator implements Serializable {
                 gameBoard.getPositionsComputer().size() - gameBoard.getPositionsUser().size())
                 + "\n";
 
-        log += "Remaining time: " + String.valueOf(gameBoard.getTime() / Variables.SEGON) +
-                " secs. \n";
+
+        log += "Time start: " + this.time + "seconds;  Time finish: " + new SimpleDateFormat("hh:mm:ss").format(new Date());;
+
+        if (timeActive) {
+            log += "Remaining time: " + String.valueOf(gameBoard.getTime() / Variables.SEGON) +
+                    " secs. \n";
+        }
 
         return log;
     }

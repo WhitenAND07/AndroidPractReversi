@@ -54,7 +54,7 @@ public class LogCreator implements Serializable {
         }
 
         log += "Position selected: " + String.valueOf(position / Integer.valueOf(size)) + "," +
-                String.valueOf(position / Integer.valueOf(size)) + "\n";
+                String.valueOf(position % Integer.valueOf(size)) + "\n";
 
         log += "Remaining positions: " + String.valueOf(Integer.valueOf(size)* Integer.valueOf(size) -
                 gameBoard.getPositionsComputer().size() - gameBoard.getPositionsUser().size())

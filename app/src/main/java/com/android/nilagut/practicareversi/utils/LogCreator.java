@@ -22,7 +22,7 @@ public class LogCreator implements Serializable {
     private LogCreator(Activity ac) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ac);
         timeActive = prefs.getBoolean(ac.getString(R.string.time_key), false);
-        size = prefs.getString(ac.getString(R.string.SizeOfTheGrid), "can't get it");
+        size = prefs.getString(ac.getString(R.string.board_key), "error, can't get it");
         time = new SimpleDateFormat("hh:mm:ss").format(new Date());
         log += "Alias: " + prefs.getString(ac.getString(R.string.user_key), "Nom invàlid") + "\n"
                 + "Grid Size: " + size + "\n";

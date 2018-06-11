@@ -21,8 +21,8 @@ public class LogCreator implements Serializable {
 
     private LogCreator(Activity ac) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ac);
-        timeActive = prefs.getBoolean(ac.getString(R.string.selectTime_key), false);
-        size = prefs.getString(ac.getString(R.string.board_key), "can't get it");
+        timeActive = prefs.getBoolean(ac.getString(R.string.time_key), false);
+        size = prefs.getString(ac.getString(R.string.SizeOfTheGrid), "can't get it");
         time = new SimpleDateFormat("hh:mm:ss").format(new Date());
         log += "Alias: " + prefs.getString(ac.getString(R.string.user_key), "Nom invàlid") + "\n"
                 + "Grid Size: " + size + "\n";
@@ -49,7 +49,7 @@ public class LogCreator implements Serializable {
 
         if(gameBoard.getTurn()==2){
             log += "Turn 1" + "\n";
-        } else {
+        } else{
             log += "Turn 2" + "\n";
         }
 

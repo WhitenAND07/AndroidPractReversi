@@ -19,6 +19,7 @@ import static com.android.nilagut.practicareversi.utils.LogCreator.*;
 
 public class GameActivity extends FragmentActivity implements GameFragment.GameListener {
 
+    private LogCreator logCreator;
 
     public void onCreate(Bundle saveInstance) {
         super.onCreate(saveInstance);
@@ -27,18 +28,18 @@ public class GameActivity extends FragmentActivity implements GameFragment.GameL
                 (R.id.fragmentGame);
 
         gameF.setGameListener(this);
-        LogCreator logCreator = LogCreator.getINSTANCE(this);
+        logCreator = LogCreator.getINSTANCE(this);
     }
 
     @Override
     public void onGameItemSelected(Integer position, GameBoard gameBoard) {
-        /*GameLogsFragment gameLogsFragment = (GameLogsFragment) getSupportFragmentManager()
+        GameLogsFragment gameLogsFragment = (GameLogsFragment) getSupportFragmentManager()
             .findFragmentById(R.id.logFragment);
         if(gameLogsFragment != null && gameLogsFragment.isInLayout()){
             GameLogsFragment gameFragmentDetail = (GameLogsFragment) getSupportFragmentManager()
            .findFragmentById(R.id.logFragment);
-            String log = LogCreator.logValues(gameBoard, position);
+            String log = logCreator.logValues(gameBoard, position);
             gameFragmentDetail.mostrarLogs(log);
-        }*/
+        }
     }
 }

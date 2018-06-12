@@ -152,11 +152,12 @@ public class ImageAdapter extends BaseAdapter {
             if (gameBoard.getPositionsPossibleCells().contains(position)) {
                 doTheMovement(position);
                 if (isFinal()) createNewActivity();
-                if (intelligenceActivated) {
+                /*if (intelligenceActivated) {
                     doTheMovement(ia.getBestMovement(gameBoard.getPositionsPossibleCells()));
                 }
-                if (isFinal()) createNewActivity();
-            } else {
+                if (isFinal()) createNewActivity();*/
+            }
+            else {
                 Toast.makeText(context, "Invalid Movement. Try again", Toast.LENGTH_SHORT).show();
             }
         }

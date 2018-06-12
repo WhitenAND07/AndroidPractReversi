@@ -20,17 +20,16 @@ public class DetailFragment extends Fragment {
         return inflater.inflate(R.layout.detail_fragment, container, false);
     }
 
-    public void viewDetails(int position) {
-        TextView txtDetalle = (TextView) getView().findViewById(R.id.TxtDetalle);
-        txtDetalle.setText(makeText(position));
+    public void viewDetails(int cellSelected) {
+        ((TextView) getView().findViewById(R.id.TxtDetail)).setText(makeText(cellSelected));
     }
 
     private String makeText(int position) {
         SQLite database = SQLite.getInstance(getContext());
         Cursor cursor = database.getDataFromDB();
         cursor.moveToPosition(position);
-        String string = "";
-        string += SQLite.GameTable.USER + ": " + cursor.getString(1) + '\n' +
+        String textGame = "";
+        textGame += SQLite.GameTable.USER + ": " + cursor.getString(1) + '\n' +
                 SQLite.GameTable.DATE + ": " + cursor.getString(2) + "\n" +
                 SQLite.GameTable.SIZE + ": " + cursor.getString(3) + "\n" +
                 SQLite.GameTable.TIME + ": " + cursor.getString(4) + "\n" +
@@ -40,7 +39,7 @@ public class DetailFragment extends Fragment {
                 SQLite.GameTable.FINAL_TIME + ": " + cursor.getString(8) + "\n" +
                 SQLite.GameTable.POSITION + ": " +
                 getResources().getString(Integer.valueOf(cursor.getString(9))) + "\n";
-        return string;
+        return textGame;
     }
 
 }

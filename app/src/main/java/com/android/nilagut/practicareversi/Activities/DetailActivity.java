@@ -9,14 +9,15 @@ import com.android.nilagut.practicareversi.R;
 
 public class DetailActivity extends FragmentActivity {
 
-    public static final String POSITION = "position";
+    public static final String CellSelected = "positionSelected";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         DetailFragment detalle = (DetailFragment) getSupportFragmentManager().
                 findFragmentById(R.id.FrgDetalle);
-        detalle.viewDetails(getIntent().getIntExtra(POSITION, 0));
+        detalle.viewDetails(getIntent().getIntExtra(CellSelected, 0));
     }
 }

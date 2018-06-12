@@ -1,12 +1,10 @@
 package com.android.nilagut.practicareversi.Fragments;
 
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.Button;
 
 import com.android.nilagut.practicareversi.Activities.DetailActivity;
 import com.android.nilagut.practicareversi.Activities.InitialActivity;
@@ -18,9 +16,9 @@ public class ConsultFragment extends FragmentActivity implements ListFragment.Ga
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consult);
-        ListFragment fragmentListado = (ListFragment) getSupportFragmentManager().
+        ListFragment fragmentList = (ListFragment) getSupportFragmentManager().
                 findFragmentById(R.id.ListFrag);
-        fragmentListado.setGameListener(this);
+        fragmentList.setGameListener(this);
     }
     public void onClick(View v) {
         Intent intent = new Intent(this, InitialActivity.class);
@@ -35,7 +33,7 @@ public class ConsultFragment extends FragmentActivity implements ListFragment.Ga
         }
         else {
             Intent intent = new Intent(this, DetailActivity.class);
-            intent.putExtra(DetailActivity.POSITION, position);
+            intent.putExtra(DetailActivity.CellSelected, position);
             startActivity(intent);
         }
     }

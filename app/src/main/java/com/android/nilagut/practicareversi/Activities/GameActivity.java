@@ -35,11 +35,11 @@ public class GameActivity extends FragmentActivity implements GameFragment.GameL
     public void onGameItemSelected(Integer position, GameBoard gameBoard) {
         GameLogsFragment gameLogsFragment = (GameLogsFragment) getSupportFragmentManager()
             .findFragmentById(R.id.logFragment);
+
         if(gameLogsFragment != null && gameLogsFragment.isInLayout()){
             GameLogsFragment gameFragmentDetail = (GameLogsFragment) getSupportFragmentManager()
            .findFragmentById(R.id.logFragment);
-            String log = logCreator.logValues(gameBoard, position);
-            gameFragmentDetail.mostrarLogs(log);
+            gameFragmentDetail.mostrarLogs(logCreator.logValues(gameBoard, position));
         }
     }
 }

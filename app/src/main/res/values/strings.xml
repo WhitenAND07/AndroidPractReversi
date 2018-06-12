@@ -52,7 +52,7 @@
     <string name="GameRun"> Partida en curs!</string>
     <string name="DatabaseLog">Database of Games</string>
     <string name="PLAYERS">Jugadors</string>
-    <string name="save">Guardar</string>
+    <string name="save">Guardado</string>
     
     <!-- Strings for the preferences -->
     <string name="userTitle">Nom d\'usuari</string>

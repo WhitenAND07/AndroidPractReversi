@@ -106,6 +106,6 @@ public class GameFragment extends Fragment {
     }
 
     public void setGameListener(GameListener listener){
-       this.listener = listener;
+        this.listener = listener;
     }
 }

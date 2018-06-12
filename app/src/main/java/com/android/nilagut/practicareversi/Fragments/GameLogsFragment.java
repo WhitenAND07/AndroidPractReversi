@@ -12,8 +12,6 @@ import com.android.nilagut.practicareversi.R;
 
 public class GameLogsFragment extends Fragment {
 
-    TextView text;
-
     @Override
     public void onCreate(Bundle savedInsanceState){
         super.onCreate(savedInsanceState);
@@ -24,9 +22,6 @@ public class GameLogsFragment extends Fragment {
     }
 
     public void mostrarLogs(String log){
-        text = (TextView) getView().findViewById(R.id.Textlog);
-        text.setText(log);
+        ((TextView) getView().findViewById(R.id.Textlog)).setText(log);
     }
-
-
 }

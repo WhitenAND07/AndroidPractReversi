@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:drawableLeft="@drawable/opcions"
+            android:drawableLeft="@drawable/ic_help"
             android:text="@string/btnHelp" />
 
         <Button
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:drawableLeft="@drawable/redpiecelittle"
+            android:drawableLeft="@drawable/ic_start_game"
             android:text="@string/btnInit" />
         <Button
             android:id="@+id/btnConsult"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/ConsultTitle"
-            android:drawableLeft="@drawable/consultar"
+            android:drawableLeft="@drawable/icon_results"
             />
 
         <Button
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:drawableLeft="@drawable/sortir"
+            android:drawableLeft="@drawable/ic_exit"
             android:text="@string/btnExit" />
     </TableRow>
 </TableLayout>

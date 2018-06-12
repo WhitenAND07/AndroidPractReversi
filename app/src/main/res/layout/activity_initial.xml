@@ -29,7 +29,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/distanciabotons"
         android:text="@string/btnHelp"
-        android:drawableLeft="@drawable/opcions"
+        android:drawableLeft="@drawable/ic_help"
         />
 
     <Button
@@ -39,7 +39,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/distanciabotons"
         android:text="@string/btnInit"
-        android:drawableLeft="@drawable/redpiecelittle"
+        android:drawableLeft="@drawable/ic_start_game"
         />
 
     <Button
@@ -49,7 +49,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/distanciabotons"
         android:text="@string/ConsultTitle"
-        android:drawableLeft="@drawable/consultar"
+        android:drawableLeft="@drawable/icon_results"
         />
 
     <Button
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/espaitext"
-        android:drawableLeft="@drawable/sortir"
+        android:drawableLeft="@drawable/ic_exit"
         android:text="@string/btnExit" />
 
 

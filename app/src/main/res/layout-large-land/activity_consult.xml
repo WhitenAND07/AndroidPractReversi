@@ -27,13 +27,11 @@
         android:layout_weight="80"
         android:orientation="horizontal">
 
-
         <fragment
             android:id="@+id/ListFrag"
             class="com.android.nilagut.practicareversi.Fragments.ListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
             android:layout_weight="100" />
 
         <fragment
@@ -49,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="10"
-        android:drawableLeft="@drawable/sortir"
+        android:drawableLeft="@drawable/ic_arrow_right"
         android:onClick="onClick"
-        android:text="@string/btnExit" />
+        android:text="@string/backBtn" />
 </LinearLayout>

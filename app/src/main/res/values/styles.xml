@@ -9,5 +9,6 @@
         <item name="colorAccent">#FFCA28</item>
 
     </style>
-    <style name="AppTheme" parent="AppTheme.Base"></style>
+
+    <style name="AppTheme" parent="AppTheme.Base" />
 </resources>

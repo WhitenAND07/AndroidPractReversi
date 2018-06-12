@@ -38,7 +38,7 @@
         android:id="@+id/btnExit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/sortir"
+        android:drawableLeft="@drawable/ic_arrow_right"
         android:onClick="onClick"
-        android:text="@string/btnExit" />
+        android:text="@string/backBtn" />
 </LinearLayout>

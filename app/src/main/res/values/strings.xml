@@ -4,20 +4,6 @@
     <string name="btnInit">Comença la Partida</string>
     <string name="btnExit">Sortir</string>
 
-    <!--- Help Activity -->
-    <string name="HelpTitle">Ajuda</string>
-    <string name="backBtn">Torna</string>
-
-    <!--- Configuration Activity -->
-    <string name="ConfigurationTitle">Configuració</string>
-    <string name="startBtn">Comença</string>
-    <string name="alias">Nick</string>
-    <string name="optionsHint1">Enter your Username: </string>
-    <string name="size">Mida de la Graella: </string>
-    <string name="time">Control del temps: </string>
-    <string name="toastMSG">Si us plau, ompli tots els camps.</string>
-
-
     <!--- Results Activity -->
     <string name="ResultsTitle">Resultats</string>
     <string name="ResultsTitle2">Resultats del joc</string>
@@ -29,11 +15,21 @@
     <string name="cellsToFinish">Caselles per acabar: </string>
 
     <!--- Help Activity -->
+    <string name="HelpTitle">Ajuda</string>
+    <string name="backBtn">Torna</string>
     <string name="help">Al seu torn cada jugador col·loca una peça de manera que toqui una fitxa pròpia o bé que encercli una o més fitxes de l\'adversari entre la peça que s\'acaba de col·locar i una del mateix color. Els discs entre ambdues queden automàticament convertits al color de qui ha tirat. L\'altra persona recupera el torn i intenta revertir la línia que acaba de perdre, envoltant les fitxes amb unes altres pròpies, o bé iniciar una nova línia. Les línies compten en horitzontal, diagonal i vertical i una mateixa fitxa pot capturar peces en diferents files o rengleres, si aconsegueix envoltar-les del color que està a la cara superior. Si un jugador no pot col·locar una peça que tombi cap fitxa o que toqui a una de les seves ja posades al tauler, ha de passar i perdre el torn. Continua l\'alternança fins que cap dels dos pot posar una peça o bé tot el tauler ha quedat cobert de fitxes. Llavors es recompten les peces de cada color i guanya qui en té més.</string>
+
+    <!--- Configuration Activity -->
+    <string name="ConfigurationTitle">Configuració</string>
+    <string name="startBtn">Comença</string>
+    <string name="alias">Nick</string>
+    <string name="optionsHint1">Enter your Username: </string>
+    <string name="size">Mida de la Graella: </string>
+    <string name="time">Control del temps: </string>
+    <string name="toastMSG">Si us plau, ompli tots els camps.</string>
 
     <!--- Consult Games Activity -->
     <string name="ConsultTitle">Acces Partides</string>
-
 
     <!--- Strings for the Log -->
     <string name="Alias">Alias:</string>
@@ -65,6 +61,7 @@
     <string name="selectTimeTitle">Temps de Joc</string>
     <string name="selectTimeSummary">Marca el temps que vols com a limit</string>
     <string name="titleDialog">Introdueix valor</string>
+
     <!--KEYS-->
     <string name="user_key">user</string>
     <string name="board_key">board</string>
